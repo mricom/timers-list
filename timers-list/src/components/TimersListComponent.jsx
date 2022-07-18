@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import SingleTimerComponent from "./SingleTimerComponent";
 import TimerForm from "./TimerFormComponent";
-import { Button } from "reactstrap";
+import { Button, ListGroup } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import {
   closeTimerModal,
@@ -15,12 +15,10 @@ export default function TimersList(props) {
   const isCreationModal = useSelector(
     (state) => state.timerModal.isCreationModal
   );
-  const isModalOpen = useSelector(
-    (state) => state.timerModal.isOpen
+  const isModalOpen = useSelector((state) => state.timerModal.isOpen);
+  const updatingTimerIndex = useSelector(
+    (state) => state.timerModal.updatingTimerIndex
   );
-  
-
-
 
   const toggleTimerModal = (create, timerIndex = null) => {
     if (isModalOpen) {
@@ -36,21 +34,26 @@ export default function TimersList(props) {
 
   return (
     <>
-      {timers.map((timer, index) => (
-        <SingleTimerComponent
-          timer={timer}
-          index={index}
-          key={index}
-          toggleModal={() => toggleTimerModal(false, index)}
-        />
-      ))}
-      <hr></hr>
       <Button onClick={() => toggleTimerModal(true)}>+ Add new timer</Button>
       <TimerForm
         isCreationModal={isCreationModal}
         toggle={toggleTimerModal}
         isOpen={isModalOpen}
+        updatingTimer={timers[updatingTimerIndex]}
+        updatingTimerIndex={updatingTimerIndex}
       />
+      <hr></hr>
+
+      <ListGroup flush>
+        {timers.map((timer, index) => (
+          <SingleTimerComponent
+            timer={timer}
+            index={index}
+            key={index}
+            toggleModal={() => toggleTimerModal(false, index)}
+          />
+        ))}
+      </ListGroup>
     </>
   );
 }

@@ -5,62 +5,78 @@ import {
   DELETE_TIMER,
   SET_TIMER_MODAL_CREATE,
   SET_TIMER_MODAL_UPDATE,
+  EDIT_TIMER,
 } from "./actions";
+import { combineReducers } from "redux";
+import { formatTime } from "../shared/utils";
 
-export const initialState = {
-  timers: TIMERS,
-  timerModal: {
-    isOpen: false,
-    isCreationModal: true,
-    updatingTimerIndex: null,
-  },
+export const initialTimersState = TIMERS;
+
+export const initialTimerModalState = {
+  isOpen: false,
+  isCreationModal: true,
+  updatingTimerIndex: null,
 };
 
-export const timers = (prevState = initialState, action) => {
+export const timersReducer = (prevState = initialTimersState, action) => {
+  let timers = [...prevState];
+  let newTimer = {};
   switch (action.type) {
     case DELETE_TIMER:
-      const timers = [...prevState.timers];
       timers.splice(action.payload.timerIndex, 1);
-      return { ...prevState, timers };
+      return timers;
     case ADD_TIMER:
-      return {
-        ...prevState,
-        timers: [
-          ...prevState.timers,
-          {
-            name: action.payload.name,
-            hours: action.payload.hours,
-            minutes: action.payload.minutes,
-            seconds: action.payload.seconds,
-          },
-        ],
-      };
-    case SET_TIMER_MODAL_CREATE:
-      return {
-        ...prevState,
-        timerModal: { ...prevState.timerModal, isCreationModal: true, isOpen: true },
-      };
-    case SET_TIMER_MODAL_UPDATE:
-      return {
-        ...prevState,
-        timerModal: {
-          ...prevState.timerModal,
-          isCreationModal: false,
-          isOpen: true,
-          updatingTimerIndex: action.payload.timerIndex,
-        },
-      };
-    case CLOSE_TIMER_MODAL: 
-      return {
-        ...prevState, 
-        timerModal: {
-          ...prevState.timerModal, 
-          isCreationModal: true, 
-          isOpen: false, 
-          updatingTimerIndex: null,
-        }
-      }
+      newTimer = formatTime(
+        action.payload.hours,
+        action.payload.minutes,
+        action.payload.seconds
+      );
+      timers.push({ name: action.payload.name, ...newTimer });
+      return timers;
+    case EDIT_TIMER:
+      newTimer = formatTime(
+        action.payload.hours,
+        action.payload.minutes,
+        action.payload.seconds
+      );
+      timers[action.payload.index] = { name: action.payload.name, ...newTimer };
+      return timers;
     default:
       return prevState;
   }
 };
+
+export const timerModalReducer = (
+  prevState = initialTimerModalState,
+  action
+) => {
+  switch (action.type) {
+    case SET_TIMER_MODAL_UPDATE:
+      return {
+        ...prevState,
+        isCreationModal: false,
+        isOpen: true,
+        updatingTimerIndex: action.payload.timerIndex,
+      };
+    case CLOSE_TIMER_MODAL:
+      return {
+        ...prevState,
+        isCreationModal: true,
+        isOpen: false,
+        updatingTimerIndex: null,
+      };
+    case SET_TIMER_MODAL_CREATE:
+      return {
+        ...prevState,
+        isCreationModal: true,
+        isOpen: true,
+      };
+    default:
+      return prevState;
+  }
+};
+
+export const mainReducer = combineReducers({
+  timers: timersReducer,
+  timerModal: timerModalReducer,
+});

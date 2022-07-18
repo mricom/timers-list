@@ -1,7 +1,7 @@
 export const formatTime = (hrs, mins, secs) => {
-    let seconds = secs % 60; 
-    let minutes = (mins + Math.floor(secs/60)) % 60;
-    let hours = (hrs + Math.floor(mins/60));
+    let seconds = Number(secs) % 60; 
+    let minutes = (Number(mins) + Math.floor(Number(secs)/60)) % 60;
+    let hours = (Number(hrs) + Math.floor(Number(mins)/60));
     return {
         hours, 
         minutes, 

@@ -4,7 +4,7 @@ import {Container} from 'reactstrap';
 
 export default function Main() {
   return (
-    <Container>
+    <Container className="my-3">
       <TimersList></TimersList>
     </Container>
   );

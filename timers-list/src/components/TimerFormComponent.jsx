@@ -21,26 +21,24 @@ import {
   composeValidators,
 } from "../shared/validators";
 import { useDispatch, useSelector } from "react-redux";
-import { addTimer } from "../redux/actions";
+import { addTimer, closeTimerModal, editTimer } from "../redux/actions";
 import { Form, Field } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 export default function TimerForm(props) {
   const dispatch = useDispatch();
-  const updatingTimerIndex = useSelector(
-    (state) => state.timerModal.updatingTimerIndex
-  );
 
   const onSubmit = (values) => {
     if (!validTime(values)) {
       return { [FORM_ERROR]: "Duration must be greater than 0 seconds." };
-    }
-    if(props.isCreationModal){
-      dispatch(addTimer(values));
     } else {
-      console.log(values);
-
+      if (props.isCreationModal) {
+        dispatch(addTimer(values));
+      } else {
+        dispatch(editTimer({...values, index: props.updatingTimerIndex}));
+      }
+      dispatch(closeTimerModal());
     }
   };
 
@@ -58,7 +56,15 @@ export default function TimerForm(props) {
         <Container>
           <Form
             onSubmit={onSubmit}
-            render={({ submitError, handleSubmit, form, submitting, pristine, values }) => (
+            initialValues={props.isCreationModal ? {} : props.updatingTimer}
+            render={({
+              submitError,
+              handleSubmit,
+              form,
+              submitting,
+              pristine,
+              values,
+            }) => (
               <form onSubmit={handleSubmit} id="timer-form">
                 <FormGroup row>
                   <Field
@@ -167,7 +173,9 @@ export default function TimerForm(props) {
                         </Field>
                       </Col>
                     </Row>
-                    {submitError && <p class="small text-danger">{submitError}</p>}
+                    {submitError && (
+                      <p class="small text-danger">{submitError}</p>
+                    )}
                   </Col>
                 </FormGroup>
               </form>

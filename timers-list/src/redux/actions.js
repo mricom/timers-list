@@ -3,6 +3,7 @@ export const DELETE_TIMER = "DELETE_TIMER";
 export const SET_TIMER_MODAL_CREATE = "SET_TIMER_MODAL_CREATE";
 export const SET_TIMER_MODAL_UPDATE = "SET_TIMER_MODAL_UPDATE";
 export const CLOSE_TIMER_MODAL = "CLOSE_TIMER_MODAL";
+export const EDIT_TIMER = "EDIT_TIMER";
 
 export function addTimer(payload) {
   return {
@@ -16,6 +17,13 @@ export function deleteTimer(payload) {
     type: DELETE_TIMER,
     payload,
   };
+}
+
+export function editTimer(payload) {
+  return {
+    type: EDIT_TIMER, 
+    payload
+  }
 }
 
 export function setTimerModalCreate(payload) {
