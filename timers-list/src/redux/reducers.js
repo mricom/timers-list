@@ -91,7 +91,6 @@ export const countdownTimerReducer = (
 ) => {
   switch (action.type) {
     case SET_COUNTDOWN_TIMER:
-      console.log(action.payload)
       return {
         ...prevState,
         selectedTimer: {

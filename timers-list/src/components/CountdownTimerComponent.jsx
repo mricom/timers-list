@@ -23,7 +23,6 @@ export default function CountdownTimer() {
     if (isCountingDown) {
       countdownTimerInterval = setInterval(() => {
         dispatch(decreaseTimeLeft());
-        console.log("hola");
       }, 1000);
     }
     return () => clearInterval(countdownTimerInterval);

@@ -82,7 +82,7 @@ export default function TimerForm(props) {
                             autoFocus
                             invalid={meta.error && meta.touched}
                             onBlur={(event) => input.onBlur(event)}
-                          />{console.log(meta, input)}
+                          />
                           <FormFeedback>{meta.error}</FormFeedback>
                         </Col>
                       </>
