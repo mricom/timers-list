@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SingleTimerComponent from "./SingleTimerComponent";
 import TimerForm from "./TimerFormComponent";
 import { Button, ListGroup } from "reactstrap";

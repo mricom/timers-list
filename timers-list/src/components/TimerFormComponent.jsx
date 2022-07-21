@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import {
   Modal,
   ModalBody,
@@ -20,11 +20,10 @@ import {
   validName,
   composeValidators,
 } from "../shared/validators";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addTimer, closeTimerModal, editTimer } from "../redux/actions";
 import { Form, Field } from "react-final-form";
 import { FORM_ERROR } from "final-form";
-import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 
 export default function TimerForm(props) {
   const dispatch = useDispatch();
