@@ -3,7 +3,7 @@ export const required = (val) =>
     ? undefined
     : "Required field.\n";
 export const minValue = (minVal) => (val) =>
-  val && val >= minVal
+  !isNaN(val) && val >= minVal
     ? undefined
     : `Should be greater or equal to ${minVal}.\n`;
 export const validName = (val) =>
