@@ -6,6 +6,9 @@ import {
   SET_TIMER_MODAL_CREATE,
   SET_TIMER_MODAL_UPDATE,
   EDIT_TIMER,
+  SET_COUNTDOWN_TIMER,
+  DECREASE_TIME_LEFT,
+  RESET_COUNTDOWN_TIMER
 } from "./actions";
 import { combineReducers } from "redux";
 import { formatTime } from "../shared/utils";
@@ -16,6 +19,15 @@ export const initialTimerModalState = {
   isOpen: false,
   isCreationModal: true,
   updatingTimerIndex: null,
+};
+
+export const initialCountdownTimerState = {
+  selectedTimer: {},
+  timeLeft: {
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+  },
 };
 
 export const timersReducer = (prevState = initialTimersState, action) => {
@@ -60,10 +72,7 @@ export const timerModalReducer = (
       };
     case CLOSE_TIMER_MODAL:
       return {
-        ...prevState,
-        isCreationModal: true,
-        isOpen: false,
-        updatingTimerIndex: null,
+        ...initialTimerModalState,
       };
     case SET_TIMER_MODAL_CREATE:
       return {
@@ -76,7 +85,54 @@ export const timerModalReducer = (
   }
 };
 
+export const countdownTimerReducer = (
+  prevState = initialCountdownTimerState,
+  action
+) => {
+  switch (action.type) {
+    case SET_COUNTDOWN_TIMER:
+      console.log(action.payload)
+      return {
+        ...prevState,
+        selectedTimer: {
+          name: action.payload.name,
+          index: action.payload.index,
+        },
+        timeLeft: {
+          hours: action.payload.hours,
+          minutes: action.payload.minutes,
+          seconds: action.payload.seconds,
+        },
+      };
+    case DECREASE_TIME_LEFT:
+      let timeLeft = { ...prevState.timeLeft };
+      if (timeLeft.seconds > 0) {
+        timeLeft.seconds -= 1;
+      } else if (timeLeft.minutes > 0) {
+        timeLeft.seconds = 59;
+        timeLeft.minutes -= 1;
+      } else if (timeLeft.hours > 0) {
+        timeLeft.seconds = 59;
+        timeLeft.minutes = 59;
+        timeLeft.hours -= 1;
+      }
+      return {
+        ...prevState,
+        timeLeft,
+      };
+    
+    case RESET_COUNTDOWN_TIMER: 
+      return {
+        ...initialCountdownTimerState,
+      }
+
+    default:
+      return prevState;
+  }
+};
+
 export const mainReducer = combineReducers({
   timers: timersReducer,
   timerModal: timerModalReducer,
+  countdownTimer: countdownTimerReducer,
 });

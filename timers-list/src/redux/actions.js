@@ -4,6 +4,9 @@ export const SET_TIMER_MODAL_CREATE = "SET_TIMER_MODAL_CREATE";
 export const SET_TIMER_MODAL_UPDATE = "SET_TIMER_MODAL_UPDATE";
 export const CLOSE_TIMER_MODAL = "CLOSE_TIMER_MODAL";
 export const EDIT_TIMER = "EDIT_TIMER";
+export const SET_COUNTDOWN_TIMER = "SET_COUNTDOWN_TIMER";
+export const RESET_COUNTDOWN_TIMER = "RESET_COUNTDOWN_TIMER"; 
+export const DECREASE_TIME_LEFT = "DECREASE_TIME_LEFT";
 
 export function addTimer(payload) {
   return {
@@ -45,4 +48,25 @@ export function closeTimerModal(payload) {
     type: CLOSE_TIMER_MODAL,
     payload,
   };
+}
+
+export function setCountdownTimer(payload){
+  return {
+    type: SET_COUNTDOWN_TIMER,
+    payload
+  }
+}
+
+export function decreaseTimeLeft(payload){
+  return{
+    type: DECREASE_TIME_LEFT, 
+    payload,
+  }
+}
+
+export function resetCountdownTimer(payload){
+  return {
+    type: RESET_COUNTDOWN_TIMER, 
+    payload
+  }
 }

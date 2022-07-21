@@ -51,7 +51,7 @@ export default function TimerForm(props) {
       toggle={props.toggle}
       isOpen={props.isOpen}
     >
-      <ModalHeader toggle={props.toggle}>Modal title</ModalHeader>
+      <ModalHeader toggle={props.toggle}>{props.isCreationModal ? "Add a new timer" : `Edit timer: ${props.updatingTimer.name}`}</ModalHeader>
       <ModalBody>
         <Container>
           <Form
@@ -60,10 +60,6 @@ export default function TimerForm(props) {
             render={({
               submitError,
               handleSubmit,
-              form,
-              submitting,
-              pristine,
-              values,
             }) => (
               <form onSubmit={handleSubmit} id="timer-form">
                 <FormGroup row>
@@ -87,7 +83,7 @@ export default function TimerForm(props) {
                             autoFocus
                             invalid={meta.error && meta.touched}
                             onBlur={(event) => input.onBlur(event)}
-                          />
+                          />{console.log(meta, input)}
                           <FormFeedback>{meta.error}</FormFeedback>
                         </Col>
                       </>

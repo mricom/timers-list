@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Row,
   Col,
@@ -10,9 +10,9 @@ import {
   ListGroupItemText,
   ListGroupItem,
 } from "reactstrap";
-import { formatTime, formatTimeString } from "../shared/utils";
+import { formatTimeString } from "../shared/utils";
 import { useDispatch } from "react-redux";
-import { deleteTimer } from "../redux/actions";
+import { deleteTimer} from "../redux/actions";
 
 export default function SingleTimerComponent(props) {
   const [optionsDropdownIsOpen, setOptionDropdownIsOpen] = useState(false);
@@ -21,16 +21,6 @@ export default function SingleTimerComponent(props) {
   const handleDelete = () => {
     dispatch(deleteTimer({ timerIndex: props.index }));
   };
-
-  // const handleEdit = () => {
-  //   let timers = JSON.parse(window.localStorage.getItem("timers"));
-  //   timers[props.index] = {
-  //     ...timers[props.index],
-
-  //   };
-  //   props.setTimers(timers);
-  //   window.localStorage.setItem("timers", JSON.stringify(timers));
-  // };
 
   const toggleDropdown = () => {
     setOptionDropdownIsOpen((prevState) => !prevState);
@@ -48,9 +38,14 @@ export default function SingleTimerComponent(props) {
                 props.timer.seconds
               )}
             </ListGroupItemHeading>
-            <ListGroupItemText className="mb-0">{props.timer.name}</ListGroupItemText>
+            <ListGroupItemText className="mb-0">
+              {props.timer.name}
+            </ListGroupItemText>
           </Col>
-          <Col xs={1} className="d-flex align-items-center justify-content-center" >
+          <Col
+            xs={1}
+            className="d-flex align-items-center justify-content-center"
+          >
             <Dropdown
               toggle={toggleDropdown}
               isOpen={optionsDropdownIsOpen}
