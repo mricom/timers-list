@@ -56,7 +56,7 @@ export default function TimerForm(props) {
         <Container>
           <Form
             onSubmit={onSubmit}
-            initialValues={props.isCreationModal ? {} : props.updatingTimer}
+            initialValues={props.isCreationModal ? {hours:0, minutes:0, seconds:0} : props.updatingTimer}
             render={({
               submitError,
               handleSubmit,

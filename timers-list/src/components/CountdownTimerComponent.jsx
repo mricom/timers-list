@@ -52,13 +52,13 @@ export default function CountdownTimer() {
 
   return (
     <div>
-      <p>
+      <h1>
         {!isNaN(timeLeft.hours) &&
         !isNaN(timeLeft.minutes) &&
         !isNaN(timeLeft.seconds)
           ? formatTimeString(timeLeft.hours, timeLeft.minutes, timeLeft.seconds)
           : formatTimeString(0, 0, 0)}
-      </p>
+      </h1>
       <div className="mb-2">
         {isCountdownStarted ? (
           <>
