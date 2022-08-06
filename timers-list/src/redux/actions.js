@@ -6,7 +6,6 @@ export const CLOSE_TIMER_MODAL = "CLOSE_TIMER_MODAL";
 export const EDIT_TIMER = "EDIT_TIMER";
 export const SET_COUNTDOWN_TIMER = "SET_COUNTDOWN_TIMER";
 export const RESET_COUNTDOWN_TIMER = "RESET_COUNTDOWN_TIMER"; 
-export const DECREASE_TIME_LEFT = "DECREASE_TIME_LEFT";
 
 export function addTimer(payload) {
   return {
@@ -54,13 +53,6 @@ export function setCountdownTimer(payload){
   return {
     type: SET_COUNTDOWN_TIMER,
     payload
-  }
-}
-
-export function decreaseTimeLeft(payload){
-  return{
-    type: DECREASE_TIME_LEFT, 
-    payload,
   }
 }
 
