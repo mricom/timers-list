@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formatTimeString } from "../shared/utils";
 import {
-  decreaseTimeLeft,
   resetCountdownTimer,
   setCountdownTimer,
 } from "../redux/actions";
