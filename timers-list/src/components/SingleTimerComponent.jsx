@@ -33,8 +33,6 @@ export default function SingleTimerComponent(props) {
           <Col xs={11}>
             <ListGroupItemHeading tag={"h3"}>
               {formatTimeString(
-                props.timer.hours,
-                props.timer.minutes,
                 props.timer.seconds
               )}
             </ListGroupItemHeading>

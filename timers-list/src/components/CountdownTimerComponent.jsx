@@ -10,11 +10,11 @@ import { Button } from "reactstrap";
 export default function CountdownTimer() {
   const timer = useSelector((state) => state.countdownTimer.selectedTimer);
   const timers = useSelector((state) => state.timers);
-  const timeLeft = useSelector((state) => state.countdownTimer.timeLeft);
   //State that is true if the timer is counting down, and false if it is stopped
   const [isCountingDown, setIsCountingDown] = useState(false);
   //State that stores if the timer has already started or not
   const [isCountdownStarted, setIsCountdownStarted] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(0);
   let countdownTimerInterval;
   const dispatch = useDispatch();
 
@@ -51,11 +51,7 @@ export default function CountdownTimer() {
   return (
     <div>
       <h1>
-        {!isNaN(timeLeft.hours) &&
-        !isNaN(timeLeft.minutes) &&
-        !isNaN(timeLeft.seconds)
-          ? formatTimeString(timeLeft.hours, timeLeft.minutes, timeLeft.seconds)
-          : formatTimeString(0, 0, 0)}
+        {formatTimeString(timeLeft.seconds)}
       </h1>
       <div className="mb-2">
         {isCountdownStarted ? (

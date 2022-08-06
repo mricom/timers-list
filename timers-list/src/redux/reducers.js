@@ -10,7 +10,7 @@ import {
   RESET_COUNTDOWN_TIMER
 } from "./actions";
 import { combineReducers } from "redux";
-import { formatTime } from "../shared/utils";
+import { formatTimeSimple } from "../shared/utils";
 
 export const initialTimersState = TIMERS;
 
@@ -32,7 +32,7 @@ export const timersReducer = (prevState = initialTimersState, action) => {
       timers.splice(action.payload.timerIndex, 1);
       return timers;
     case ADD_TIMER:
-      newTimer = formatTime(
+      newTimer = formatTimeSimple(
         action.payload.hours,
         action.payload.minutes,
         action.payload.seconds
@@ -40,7 +40,7 @@ export const timersReducer = (prevState = initialTimersState, action) => {
       timers.push({ name: action.payload.name, ...newTimer });
       return timers;
     case EDIT_TIMER:
-      newTimer = formatTime(
+      newTimer = formatTimeSimple(
         action.payload.hours,
         action.payload.minutes,
         action.payload.seconds

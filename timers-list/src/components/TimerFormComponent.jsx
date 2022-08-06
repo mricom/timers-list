@@ -24,6 +24,7 @@ import { useDispatch } from "react-redux";
 import { addTimer, closeTimerModal, editTimer } from "../redux/actions";
 import { Form, Field } from "react-final-form";
 import { FORM_ERROR } from "final-form";
+import { formatTimeExtended } from "../shared/utils";
 
 export default function TimerForm(props) {
   const dispatch = useDispatch();
@@ -55,7 +56,7 @@ export default function TimerForm(props) {
         <Container>
           <Form
             onSubmit={onSubmit}
-            initialValues={props.isCreationModal ? {hours:0, minutes:0, seconds:0} : props.updatingTimer}
+            initialValues={props.isCreationModal ? {hours:0, minutes:0, seconds:0} : {...props.updatingTimer, ...formatTimeExtended(props.updatingTimer.seconds)}}
             render={({
               submitError,
               handleSubmit,
