@@ -1,4 +1,4 @@
-import { TIMERS } from "../shared/timers";
+import { Timer, TIMERS } from "../shared/timers";
 import {
   ADD_TIMER,
   CLOSE_TIMER_MODAL,
@@ -26,26 +26,26 @@ export const initialCountdownTimerState = {
 
 export const timersReducer = (prevState = initialTimersState, action) => {
   let timers = [...prevState];
-  let newTimer = {};
+  let seconds = 0;
   switch (action.type) {
     case DELETE_TIMER:
       timers.splice(action.payload.timerIndex, 1);
       return timers;
     case ADD_TIMER:
-      newTimer = formatTimeSimple(
+      seconds = formatTimeSimple(
         action.payload.hours,
         action.payload.minutes,
         action.payload.seconds
       );
-      timers.push({ name: action.payload.name, ...newTimer });
+      timers.push(new Timer(action.payload.name, seconds));
       return timers;
     case EDIT_TIMER:
-      newTimer = formatTimeSimple(
+      seconds = formatTimeSimple(
         action.payload.hours,
         action.payload.minutes,
         action.payload.seconds
       );
-      timers[action.payload.index] = { name: action.payload.name, ...newTimer };
+      timers[action.payload.index] = { name: action.payload.name, seconds };
       return timers;
     default:
       return prevState;
@@ -88,7 +88,7 @@ export const countdownTimerReducer = (
       return {
         ...prevState,
         selectedTimer: {
-          name: action.payload.name,
+          ...action.payload,
           index: action.payload.index,
         },
       };

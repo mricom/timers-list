@@ -1,10 +1,12 @@
+export class Timer{
+  constructor(name, seconds){
+    this.name = name;
+    this.seconds = seconds;
+  }
+}
+
 export const TIMERS = [
-    {
-      name: "Timer 1",
-      seconds: 5
-    },
-    {
-      name: "Timer 2",
-      seconds: 10
-    },
+    new Timer("Timer 1", 5),
+    new Timer("Timer 2", 3),
+    new Timer("Timer 3", 4),
   ];
