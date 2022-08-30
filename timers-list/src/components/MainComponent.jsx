@@ -1,13 +1,17 @@
 import React from "react";
 import TimersList from "./TimersListComponent";
-import {Container} from 'reactstrap';
+import { Container } from "reactstrap";
 import CountdownTimer from "./CountdownTimerComponent";
+import CustomNavbar from "./CustomNavbarComponent";
 
 export default function Main() {
   return (
-    <Container className="my-3">
-      <CountdownTimer></CountdownTimer>
-      <TimersList></TimersList>
-    </Container>
+    <>
+      <CustomNavbar />
+      <Container className="my-3">
+        <CountdownTimer></CountdownTimer>
+        <TimersList></TimersList>
+      </Container>
+    </>
   );
 }
