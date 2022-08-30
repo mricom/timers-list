@@ -1,7 +1,7 @@
 import React from "react";
 import SingleTimerComponent from "./SingleTimerComponent";
 import TimerForm from "./TimerFormComponent";
-import { Button, ListGroup } from "reactstrap";
+import { Button, ListGroup, Row, Col } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import {
   closeTimerModal,
@@ -34,7 +34,6 @@ export default function TimersList(props) {
 
   return (
     <>
-      <Button onClick={() => toggleTimerModal(true)}>+ Add new timer</Button>
       <TimerForm
         isCreationModal={isCreationModal}
         toggle={toggleTimerModal}
@@ -43,7 +42,9 @@ export default function TimersList(props) {
         updatingTimerIndex={updatingTimerIndex}
       />
       <hr></hr>
-
+      <Row>
+        <Col className="d-flex justify-content-center mb-2"><Button onClick={() => toggleTimerModal(true)}>+ Add new timer</Button></Col>
+      </Row>
       <ListGroup flush>
         {timers.map((timer, index) => (
           <SingleTimerComponent
