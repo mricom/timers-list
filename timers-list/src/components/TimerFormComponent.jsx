@@ -42,6 +42,8 @@ export default function TimerForm(props) {
   return (
     <>
       <CustomModal
+        toggle={props.toggle}
+        isOpen={props.isOpen}
         modalHeader={
           props.isCreationModal
             ? "Add a new timer"
