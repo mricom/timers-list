@@ -1,9 +1,7 @@
 .menu-dropdown-toggle-button.dropdown-toggle::after,
 .dropstart .menu-dropdown-toggle-button.dropdown-toggle::before {
-  content: none;
-}
+  content: none; }
 
 .menu-dropdown-toggle-button {
   height: 40px;
-  width: 40px;
-}
+  width: 40px; }
