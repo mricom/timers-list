@@ -21,7 +21,7 @@ import { addTimer, closeTimerModal, editTimer } from "../redux/actions";
 import { Form, Field } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 import { formatTimeExtended } from "../shared/utils";
-import { CustomModal } from "./CustomModalComponent";
+import CustomModal from "./CustomModalComponent";
 
 export default function TimerForm(props) {
   const dispatch = useDispatch();
