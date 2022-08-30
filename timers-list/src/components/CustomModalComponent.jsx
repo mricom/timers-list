@@ -1,9 +1,7 @@
 import React from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
-import { useDispatch } from "react-redux";
 
 export default function CustomModal(props) {
-  const dispatch = useDispatch();
 
   return (
     <Modal
