@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { formatTimeString } from "../shared/utils";
-import { Button, Row, Col } from "reactstrap";
-import "../css/CountdownTimer.css";
+import { useSelector } from "react-redux";
+
+import CountdownTimerCard from "./CountdownTimerCardComponent";
 
 export default function CountdownTimer() {
   const timers = useSelector((state) => state.timers);
@@ -71,41 +70,16 @@ export default function CountdownTimer() {
   };
 
   return (
-    <div>
-      <Row>
-        <Col>
-          <p>
-            <span id="countdown-timer-numbers-big">
-              {formatTimeString(timeLeft)}
-            </span>
-          </p>
-        </Col>
-        <Col>
-          <h2>{timers[timerIndex].name}</h2>
-        </Col>
-      </Row>
-      <div className="mb-2">
-        {isCountdownStarted ? (
-          <>
-            {isCountingDown ? (
-              <Button type="button" onClick={stopTimer} className="me-2">
-                Stop
-              </Button>
-            ) : (
-              <Button type="button" onClick={resumeTimer} className="me-2">
-                Resume
-              </Button>
-            )}
-            <Button type="button" onClick={resetTimer}>
-              Reset
-            </Button>
-          </>
-        ) : (
-          <Button type="button" onClick={startTimer}>
-            Start
-          </Button>
-        )}
-      </div>
-    </div>
+    <CountdownTimerCard 
+      timeLeft={timeLeft}
+      timers={timers}
+      timerIndex={timerIndex}
+      startTimer={()=>startTimer}
+      stopTimer={()=>stopTimer}
+      resumeTimer={()=>resumeTimer}
+      resetTimer={()=>resetTimer}
+      isCountdownStarted={isCountdownStarted}
+      isCountingDown={isCountingDown}
+    />
   );
 }

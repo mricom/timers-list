@@ -18,7 +18,7 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className="mb-5" light expand="md">
+        <Navbar className="mb-5 custom-navbar" light expand="md">
           <Container>
             <NavbarBrand href="/">TimersList</NavbarBrand>
           </Container>

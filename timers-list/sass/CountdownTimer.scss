@@ -1,3 +1,9 @@
-#countdown-timer-numbers-big{
-    font-size: 8rem;
+@import "variables";
+
+#countdown-timer-numbers-big {
+  font-size: 8vw;
+}
+
+.card.countdown-timer-container {
+  background-color: $secondary-p1;
 }

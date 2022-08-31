@@ -1,5 +1,6 @@
-html, body .App, .navbar {
-  background-color: #65b7ee; }
+html, body .App, .navbar, .custom-navbar.navbar-light .navbar-brand {
+  background-color: #2ea7f8;
+  color: white; }
 
 .menu-dropdown-toggle-button.dropdown-toggle::after,
 .dropstart .menu-dropdown-toggle-button.dropdown-toggle::before {

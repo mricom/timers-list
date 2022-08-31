@@ -1,2 +1,5 @@
 #countdown-timer-numbers-big {
-  font-size: 8rem; }
+  font-size: 8vw; }
+
+.card.countdown-timer-container {
+  background-color: #54b8fc; }
