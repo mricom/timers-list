@@ -1,3 +1,6 @@
+html, body .App, .navbar {
+  background-color: #65b7ee; }
+
 .menu-dropdown-toggle-button.dropdown-toggle::after,
 .dropstart .menu-dropdown-toggle-button.dropdown-toggle::before {
   content: none; }
