@@ -43,18 +43,26 @@ export default function TimersList(props) {
       />
       <hr></hr>
       <Row>
-        <Col className="d-flex justify-content-center mb-2"><Button onClick={() => toggleTimerModal(true)}>+ Add new timer</Button></Col>
+        <Col className="d-flex justify-content-center mb-2">
+          <Button onClick={() => toggleTimerModal(true)}>
+            + Add new timer
+          </Button>
+        </Col>
       </Row>
-      <ListGroup flush>
-        {timers.map((timer, index) => (
-          <SingleTimerComponent
-            timer={timer}
-            index={index}
-            key={index}
-            toggleModal={() => toggleTimerModal(false, index)}
-          />
-        ))}
-      </ListGroup>
+      {timers.length > 0 ? (
+        <ListGroup flush>
+          {timers.map((timer, index) => (
+            <SingleTimerComponent
+              timer={timer}
+              index={index}
+              key={index}
+              toggleModal={() => toggleTimerModal(false, index)}
+            />
+          ))}
+        </ListGroup>
+      ) : (
+        <></>
+      )}
     </>
   );
 }

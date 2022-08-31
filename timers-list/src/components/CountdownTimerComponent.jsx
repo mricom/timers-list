@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { formatTimeString } from "../shared/utils";
 import { Button, Row, Col } from "reactstrap";
+import "../css/CountdownTimer.css";
 
 export default function CountdownTimer() {
   const timers = useSelector((state) => state.timers);
@@ -20,8 +21,8 @@ export default function CountdownTimer() {
     );
   };
 
-  // Function that invoques decrease timer every second. 
-  // On unmounting the component, the interval is cleared. 
+  // Function that invoques decrease timer every second.
+  // On unmounting the component, the interval is cleared.
   useEffect(() => {
     if (isCountingDown) {
       countdownTimerInterval = setInterval(() => {
@@ -36,15 +37,15 @@ export default function CountdownTimer() {
     if (isCountingDown && timeLeft === 0) {
       if (timerIndex < timers.length - 1) {
         setTimerIndex((prevState) => ++prevState);
-      }  else {
+      } else {
         resetTimer();
       }
-    } 
+    }
   }, [timeLeft]);
 
-  useEffect(()=> {
+  useEffect(() => {
     setTimeLeft(timers[timerIndex].seconds);
-  }, [timerIndex])
+  }, [timerIndex]);
 
   const startTimer = () => {
     setTimeLeft(timers[0].seconds);
@@ -73,9 +74,13 @@ export default function CountdownTimer() {
     <div>
       <Row>
         <Col>
-          <h1>{formatTimeString(timeLeft)}</h1>
+          <p>
+            <span id="countdown-timer-numbers-big">
+              {formatTimeString(timeLeft)}
+            </span>
+          </p>
         </Col>
-        <Col> 
+        <Col>
           <h2>{timers[timerIndex].name}</h2>
         </Col>
       </Row>
