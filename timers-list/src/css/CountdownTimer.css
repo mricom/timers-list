@@ -1,5 +1,5 @@
 #countdown-timer-numbers-big {
-  font-size: 8vw; }
+  font-size: Min(calc(8vw), 150px); }
 
 .card.countdown-timer-container {
   background-color: #54b8fc;
