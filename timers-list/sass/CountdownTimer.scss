@@ -1,7 +1,7 @@
 @import "variables";
 
 #countdown-timer-numbers-big {
-  font-size: Min(calc(8vw), 150px);
+  font-size: Max(Min(calc(8vw), 150px), 70px);
 }
 
 .card.countdown-timer-container {
