@@ -1,8 +1,14 @@
 @import "variables";
 
+@font-face {
+  font-family: 'Arial Rounded';
+  src: url("./fonts/arial-rounded/unicode.arialr.ttf");
+}
+
 html, body .App, .navbar,.custom-navbar.navbar-light .navbar-brand{
   background-color: $primary-p1;
   color: white;
+  font-family: 'Arial Rounded';
 }
 
 .menu-dropdown-toggle-button.dropdown-toggle::after,
