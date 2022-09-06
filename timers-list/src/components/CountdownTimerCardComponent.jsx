@@ -1,6 +1,7 @@
 import React from "react";
 import { formatTimeString } from "../shared/utils";
-import { Button, Row, Col, Card } from "reactstrap";
+import { Row, Col, Card } from "reactstrap";
+import ActionButton from "./ActionButtonComponent";
 import "../css/CountdownTimer.css";
 
 export default function CountdownTimerCard(props) {
@@ -8,7 +9,7 @@ export default function CountdownTimerCard(props) {
     <>
       <Card body className="countdown-timer-container">
         <Row>
-          <Col  lg={7} md={6} sm={12}>
+          <Col lg={7} md={12}>
             <div>
               <p>
                 <span id="countdown-timer-numbers-big">
@@ -16,34 +17,38 @@ export default function CountdownTimerCard(props) {
                 </span>
               </p>
             </div>
-            <div className="mb-2">
+            <div className="mb-2 mx-auto">
               {props.isCountdownStarted ? (
                 <>
                   {props.isCountingDown ? (
-                    <Button
+                    <ActionButton
                       type="button"
                       onClick={props.stopTimer}
                       className="me-2"
                     >
                       Stop
-                    </Button>
+                    </ActionButton>
                   ) : (
-                    <Button
+                    <ActionButton
                       type="button"
                       onClick={props.resumeTimer}
                       className="me-2"
                     >
                       Resume
-                    </Button>
+                    </ActionButton>
                   )}
-                  <Button type="button" onClick={props.resetTimer()}>
+                  <ActionButton type="button" onClick={props.resetTimer()}>
                     Reset
-                  </Button>
+                  </ActionButton>
                 </>
               ) : (
-                <Button type="button" onClick={props.startTimer()}>
+                <ActionButton
+                  type="button"
+                  variant="primary"
+                  onClick={props.startTimer()}
+                >
                   Start
-                </Button>
+                </ActionButton>
               )}
             </div>
           </Col>

@@ -1,0 +1,11 @@
+.custom-button.btn.btn-secondary {
+  color: #2ea7f8;
+  background-color: white;
+  border: none;
+  box-shadow: #ebebeb 0px 6px 0px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  width: Min(calc(90%), 300px);
+  height: 50px;
+  font-size: Min(calc(5vh), 20px);
+  padding-top: 14px; }
