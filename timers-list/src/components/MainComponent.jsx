@@ -8,7 +8,7 @@ export default function Main() {
   return (
     <>
       <CustomNavbar />
-      <Container className="my-3">
+      <Container className="my-3 main-container">
         <CountdownTimer></CountdownTimer>
         <TimersList></TimersList>
       </Container>
