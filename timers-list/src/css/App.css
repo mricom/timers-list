@@ -14,3 +14,6 @@ html, body .App, .navbar, .custom-navbar.navbar-light .navbar-brand {
 .menu-dropdown-toggle-button {
   height: 40px;
   width: 40px; }
+
+.container.main-container {
+  max-width: 700px; }
