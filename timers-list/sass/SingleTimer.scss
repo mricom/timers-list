@@ -1,0 +1,42 @@
+@import "variables";
+
+.list-group {
+  border-radius: 5px;
+  .list-group-item {
+    margin-bottom: 10px;
+    border-radius: 5px;
+    color: $letter-grey;
+    .single-timer-duration {
+      font-size: 1.5rem;
+      margin-bottom: 2px;
+    }
+    span{
+      margin-left: 10px;
+      color: $primary-p1;
+      font-size: 1.2rem;
+      &:hover {
+        cursor: pointer;
+        color: $dark-primary-p1;
+      }
+    }
+    .list-group-item-text{
+        font-size: 1.2rem;
+    }
+    .btn.btn-secondary.dropdown-toggle {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $secondary-p1;
+      border-color: $light-primary-p1;
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: $primary-p1;
+        border-color: $primary-p1;
+        box-shadow: 0 0 0 0.25rem $light-primary-p1;
+      }
+    }
+  }
+}

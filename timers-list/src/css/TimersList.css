@@ -1,0 +1,11 @@
+.btn.btn-secondary.add-timer-button {
+  height: 60px;
+  background-color: #1780c7bd;
+  border: 2px dashed #54b8fc;
+  color: rgba(255, 255, 255, 0.705);
+  font-size: 1.1rem; }
+  .btn.btn-secondary.add-timer-button:hover, .btn.btn-secondary.add-timer-button:active, .btn.btn-secondary.add-timer-button:focus {
+    background-color: rgba(2, 118, 196, 0.91);
+    border: 2px dashed #54b8fc;
+    color: rgba(255, 255, 255, 0.918);
+    dow: none; }
