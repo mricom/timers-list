@@ -8,6 +8,7 @@ import {
   setTimerModalCreate,
   setTimerModalUpdate,
 } from "../redux/actions";
+import "../css/TimersList.css";
 
 export default function TimersList(props) {
   const timers = useSelector((state) => state.timers);
@@ -42,15 +43,8 @@ export default function TimersList(props) {
         updatingTimerIndex={updatingTimerIndex}
       />
       <hr></hr>
-      <Row>
-        <Col className="d-flex justify-content-center mb-2">
-          <Button onClick={() => toggleTimerModal(true)}>
-            + Add new timer
-          </Button>
-        </Col>
-      </Row>
       {timers.length > 0 ? (
-        <ListGroup flush>
+        <ListGroup>
           {timers.map((timer, index) => (
             <SingleTimerComponent
               timer={timer}
@@ -63,6 +57,17 @@ export default function TimersList(props) {
       ) : (
         <></>
       )}
+      <Row>
+        <Col className="d-flex justify-content-center mb-2">
+          <Button
+            onClick={() => toggleTimerModal(true)}
+            className="add-timer-button"
+            block
+          >
+            <i class="fa-solid fa-circle-plus me-1"></i> Add new timer
+          </Button>
+        </Col>
+      </Row>
     </>
   );
 }

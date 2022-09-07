@@ -43,7 +43,9 @@ export default function CountdownTimer() {
   }, [timeLeft]);
 
   useEffect(() => {
-    setTimeLeft(timers[timerIndex].seconds);
+    if (timers.length) {
+      setTimeLeft(timers[timerIndex].seconds);
+    }
   }, [timerIndex]);
 
   const startTimer = () => {
@@ -70,14 +72,14 @@ export default function CountdownTimer() {
   };
 
   return (
-    <CountdownTimerCard 
+    <CountdownTimerCard
       timeLeft={timeLeft}
       timers={timers}
       timerIndex={timerIndex}
-      startTimer={()=>startTimer}
-      stopTimer={()=>stopTimer}
-      resumeTimer={()=>resumeTimer}
-      resetTimer={()=>resetTimer}
+      startTimer={() => startTimer}
+      stopTimer={() => stopTimer}
+      resumeTimer={() => resumeTimer}
+      resetTimer={() => resetTimer}
       isCountdownStarted={isCountdownStarted}
       isCountingDown={isCountingDown}
     />

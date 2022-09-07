@@ -7,9 +7,12 @@ import "../css/CountdownTimer.css";
 export default function CountdownTimerCard(props) {
   return (
     <>
-      <Card body className="countdown-timer-container">
+      <Card body className="countdown-timer-container my-4">
         <Row>
-          <Col lg={7} md={12}>
+          <Col className="text-center">
+            <div>
+              <h2>{props.timers.length ? props.timers[props.timerIndex].name : "Timers List"}</h2>
+            </div>
             <div>
               <p>
                 <span id="countdown-timer-numbers-big">
@@ -17,43 +20,45 @@ export default function CountdownTimerCard(props) {
                 </span>
               </p>
             </div>
-            <div className="mb-2 mx-auto">
+            <Row className="mb-2 mx-auto">
               {props.isCountdownStarted ? (
                 <>
-                  {props.isCountingDown ? (
-                    <ActionButton
-                      type="button"
-                      onClick={props.stopTimer}
-                      className="me-2"
-                    >
-                      Stop
+                  <Col>
+                    {props.isCountingDown ? (
+                      <ActionButton
+                        type="button"
+                        onClick={props.stopTimer()}
+                        className="me-2"
+                      >
+                        Stop
+                      </ActionButton>
+                    ) : (
+                      <ActionButton
+                        type="button"
+                        onClick={props.resumeTimer()}
+                        className="me-2"
+                      >
+                        Resume
+                      </ActionButton>
+                    )}
+                  </Col>
+                  <Col>
+                    <ActionButton type="button" onClick={props.resetTimer()}>
+                      Reset
                     </ActionButton>
-                  ) : (
-                    <ActionButton
-                      type="button"
-                      onClick={props.resumeTimer}
-                      className="me-2"
-                    >
-                      Resume
-                    </ActionButton>
-                  )}
-                  <ActionButton type="button" onClick={props.resetTimer()}>
-                    Reset
-                  </ActionButton>
+                  </Col>
                 </>
               ) : (
                 <ActionButton
                   type="button"
                   variant="primary"
                   onClick={props.startTimer()}
+                  disabled={!props.timers.length}
                 >
                   Start
                 </ActionButton>
               )}
-            </div>
-          </Col>
-          <Col>
-            <h2>{props.timers[props.timerIndex].name}</h2>
+            </Row>
           </Col>
         </Row>
       </Card>

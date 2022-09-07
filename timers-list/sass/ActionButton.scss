@@ -11,4 +11,9 @@
   height: 50px;
   font-size: Min(calc(5vh), 20px);
   padding-top: 14px;
+  &:hover{
+    background-color: #acdeff;
+    color: white;
+    box-shadow: none;
+  }
 }

@@ -22,6 +22,7 @@ import { Form, Field } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 import { formatTimeExtended } from "../shared/utils";
 import CustomModal from "./CustomModalComponent";
+import "../css/TimerForm.css";
 
 export default function TimerForm(props) {
   const dispatch = useDispatch();
@@ -182,7 +183,11 @@ export default function TimerForm(props) {
         }
         modalFooter={
           <div className="row">
-            <Button type="submit" form="timer-form">
+            <Button
+              type="submit"
+              form="timer-form"
+              className="form-submit-button"
+            >
               Submit
             </Button>
           </div>

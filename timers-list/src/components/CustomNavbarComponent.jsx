@@ -19,9 +19,9 @@ export default class Example extends React.Component {
   render() {
     return (
       <div>
-        <Navbar className="mb-4 custom-navbar" light expand="md">
+        <Navbar className="custom-navbar" light expand="md">
           <Container className="main-container">
-            <NavbarBrand href="/">TimersList</NavbarBrand>
+            <NavbarBrand href="/">Timers List</NavbarBrand>
           </Container>
         </Navbar>
       </div>

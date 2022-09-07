@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap";
+import "../css/CustomModalComponent.css"
 
 export default function CustomModal(props) {
 
@@ -12,7 +13,7 @@ export default function CustomModal(props) {
       toggle={props.toggle}
       isOpen={props.isOpen}
     >
-      <ModalHeader toggle={props.toggle}>{props.modalHeader}</ModalHeader>
+      <ModalHeader toggle={props.toggle} charCode="Y">{props.modalHeader}</ModalHeader>
       <ModalBody>{props.modalBody}</ModalBody>
       <ModalFooter>{props.modalFooter}</ModalFooter>
     </Modal>

@@ -1,10 +1,16 @@
 @import "variables";
 
 #countdown-timer-numbers-big {
-  font-size: Max(Min(calc(8vw), 150px), 70px);
+  font-size: Max(Min(calc(20vw), 150px), 70px);
 }
 
 .card.countdown-timer-container {
   background-color: $secondary-p1;
   border: none;
+}
+
+@media(min-width: 768px){
+  #countdown-timer-numbers-big {
+    font-size: 150px;
+  }
 }

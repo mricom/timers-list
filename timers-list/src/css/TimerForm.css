@@ -1,0 +1,8 @@
+.btn.btn-secondary.form-submit-button {
+  background-color: #54b8fc;
+  border-color: #54b8fc; }
+  .btn.btn-secondary.form-submit-button:hover, .btn.btn-secondary.form-submit-button:active, .btn.btn-secondary.form-submit-button:focus {
+    background-color: #2ea7f8;
+    border-color: #2ea7f8; }
+  .btn.btn-secondary.form-submit-button:active, .btn.btn-secondary.form-submit-button:focus {
+    box-shadow: 0 0 0 0.25rem #8bd1ff; }

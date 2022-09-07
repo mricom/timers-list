@@ -1,0 +1,9 @@
+@import "variables";
+
+.modal-content .modal-header{
+    background-color: $secondary-p1;
+    color: white;
+    .btn-close {
+        background-color: white;
+    }
+}

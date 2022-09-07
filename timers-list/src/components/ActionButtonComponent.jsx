@@ -11,6 +11,7 @@ export default function ActionButton(props) {
         className={"custom-button " + props.className}
         form={props.form}
         variant={props.variant}
+        disabled={props.disabled}
       >
         {(props.children).toUpperCase()}
       </Button>
